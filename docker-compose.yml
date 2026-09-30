@@ -15,7 +15,7 @@ services:
       - APP_PORT=3000
     volumes:
       - app-data:/app/public/images
-    network:
+    networks:
       - simple-apps
 
   db:
@@ -29,7 +29,7 @@ services:
     volumes:
       - ./app/database/:/docker-entrypoint-initdb.d
       - db-data:/var/lib/mysql
-    network:
+    networks:
       - simple-apps
 
 volumes:
