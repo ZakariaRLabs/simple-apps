@@ -16,6 +16,7 @@ services:
     volumes:
       - app-data:/app/public/images
     networks:
+      - proxy
       - simple-apps
 
   db:
@@ -39,4 +40,4 @@ volumes:
 networks:  
 proxy:
   external: true
-  simple-apps:
+simple-apps:
