@@ -19,10 +19,6 @@ services:
   db:
     image: "mariadb"
     restart: always
-    links:
-      - phpmyadmin
-    ports:
-      - "3306"
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=training
@@ -32,22 +28,11 @@ services:
       - ./app/database/:/docker-entrypoint-initdb.d
       - db-data:/var/lib/mysql
 
-  phpmyadmin:
-    image: "phpmyadmin"
-    restart: always
-    ports:
-      - "9080:80"
-    environment:
-      - PMA_HOST=db
-
-  web:
-    build: ./nginx
-    restart: always
-    ports:
-    - "80:80"
-    depends_on:
-    - backend
-
 volumes:
   app-data:
   db-data:
+  
+networks:  
+proxy:
+  external: true
+  simple-apps:
