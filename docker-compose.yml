@@ -15,6 +15,8 @@ services:
       - APP_PORT=3000
     volumes:
       - app-data:/app/public/images
+    network:
+      - simple-apps
 
   db:
     image: "mariadb"
@@ -27,6 +29,8 @@ services:
     volumes:
       - ./app/database/:/docker-entrypoint-initdb.d
       - db-data:/var/lib/mysql
+    network:
+      - simple-apps
 
 volumes:
   app-data:
