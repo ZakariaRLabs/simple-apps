@@ -38,6 +38,6 @@ volumes:
   db-data:
   
 networks:  
-proxy:
-  external: true
-simple-apps:
+  proxy:
+    external: true
+  simple-apps:
